@@ -90,9 +90,9 @@
     <div class="clue">Enter the solution from the first envelope</div>
     <input type="text" id="word1" placeholder="Enter the first word" oninput="checkWord(1)">
     <div class="clue" style="display:none;" id="clue2">  <div class="quiz-question">
-    In the realm of renewable energy, a particular source stands out for its unique 'voice'. It's a type of energy generation that can 'speak' volumes about efficiency and sustainability without saying a word, yet it's often heard before it's seen. This source helps to reduce carbon footprints and can be a key topic of discussion at any work dinner, especially for those in the energy sector.
+    <p></p>In the realm of renewable energy, a particular source stands out for its unique 'voice'. It's a type of energy generation that can 'speak' volumes about efficiency and sustainability without saying a word, yet it's often heard before it's seen. This source helps to reduce carbon footprints and can be a key topic of discussion at any work dinner, especially for those in the energy sector.</p>
     <div class="quiz-prompt">
-      What is this vocal energy source, often found in groups, that could serve as a 'talking point' at our dinner tonight?
+      <p></p>What is this vocal energy source, often found in groups, that could serve as a 'talking point' at our dinner tonight?</p>
     </div>
   </div>
 </div></div>
@@ -105,7 +105,7 @@
 </div>
 
 <script>
-  var correctWords = ['first', 'second', 'third']; // Replace with actual words
+  var correctWords = ['Equinor', 'Wind turbines', 'third']; // Replace with actual words
   function validateInput(event) {
     var regex = /^[a-zA-Z0-9]+$/;
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
