@@ -3,78 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Word Verification</title>
+<title>Sequential Word Input</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f3f3f3;
-    margin: 0;
-    padding: 20px;
-  }
-  .container {
-    max-width: 300px;
-    margin: auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #5cb85c;
-    color: white;
-    cursor: pointer;
-  }
-  input[type="submit"]:hover {
-    background-color: #4cae4c;
-  }
-  .result {
-    margin-top: 20px;
-    text-align: center;
+  /* ... CSS from the previous example ... */
+  input[type="text"]:not(:first-of-type) {
+    display: none;
   }
 </style>
 </head>
 <body>
 <div class="container">
   <form id="wordForm">
-    <input type="text" id="word1" placeholder="Enter first word">
-    <input type="text" id="word2" placeholder="Enter second word">
-    <input type="text" id="word3" placeholder="Enter third word">
-    <input type="submit" value="Verify Words">
+    <input type="text" id="word1" placeholder="Clue for first word" oninput="checkWord(1)">
+    <input type="text" id="word2" placeholder="Clue for second word" oninput="checkWord(2)">
+    <input type="text" id="word3" placeholder="Clue for third word" oninput="checkWord(3)">
+    <div class="result" id="result"></div>
   </form>
-  <div class="result" id="result"></div>
 </div>
 
 <script>
-  document.getElementById('wordForm').onsubmit = function(event) {
-    event.preventDefault();
-    var correctWords = ['what', 'is', 'uplift'];
-    var userWords = [
-      document.getElementById('word1').value,
-      document.getElementById('word2').value,
-      document.getElementById('word3').value
-    ];
-    var resultText = 'The words are ' + (arraysEqual(userWords, correctWords) ? 'correct.' : 'incorrect.');
-    document.getElementById('result').textContent = resultText;
-  };
+  var correctWords = ['what', 'is', 'uplift']; // Replace with actual words
+  
+  function checkWord(index) {
+    var inputId = 'word' + index;
+    var inputValue = document.getElementById(inputId).value.toLowerCase();
+    var nextInputId = 'word' + (index + 1);
 
-  function arraysEqual(arr1, arr2) {
-    if (arr1.length !== arr2.length) return false;
-    for (var i = 0; i < arr1.length; i++) {
-      if (arr1[i].toLowerCase() !== arr2[i].toLowerCase()) return false;
+    if (inputValue === correctWords[index - 1]) {
+      if(index < correctWords.length) {
+        document.getElementById(nextInputId).style.display = 'block';
+      } else {
+        document.getElementById('result').textContent = 'All words are correct. Congratulations!';
+      }
     }
-    return true;
   }
 </script>
 </body>
