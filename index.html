@@ -1,111 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Word Challenge</title>
-<style>
-  /* CSS code */
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-  }
-  .container {
-    max-width: 340px;
-    margin: 20px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .clue {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #333;
-  }
-  input[type="text"] {
-    width: calc(100% - 20px);
-    padding: 12px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-  .photo-placeholder {
-    width: 100%;
-    height: 200px;
-    background-color: #eaeaea;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    text-align: center;
-    line-height: 200px;
-    color: #ccc;
-    font-size: 16px;
-  }
-  input[type="button"] {
-    width: 100%;
-    padding: 15px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #5cb85c;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  input[type="button"]:hover {
-    background-color: #4cae4c;
-  }
-  .result {
-    margin-top: 20px;
-    text-align: center;
-  }
-  @media (max-width: 480px) {
-    .container {
-      width: 95%;
-      margin-top: 10px;
-    }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Challenge</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
-  <div class="intro-text">
-  <h1>Welcome to The Carbon Thief Puzzle</h1>
-  <p>Esteemed Participants,</p>
-  <p>The world is on the brink of an ecological precipice, and a nefarious entity known only as The Carbon Thief has exacerbated this crisis by stealing carbon certificates. These certificates are crucial in our endeavor to keep the world carbon neutral.</p>
-  <p>Your mission, should you choose to accept it, is to solve a three-part social riddle. Each part of the puzzle is concealed within envelopes placed upon your table. At precisely <span class="time">18:00</span>, <span class="time">19:00</span>, and <span class="time">20:00</span>, you will unveil and confront these challenges.</p>
-  <p>Engage your wit, harness your collective expertise, and work collaboratively to outsmart The Carbon Thief. Victory will not only signify the safeguarding of our planet but also bestow upon the winning team a prize worthy of such a monumental triumph.</p>
-  <p>Prepare yourselves for an evening of intrigue, strategy, and environmental salvation. The fate of the world is, quite literally, in your hands.</p>
-  <p class="prize">Good luck to all.</p>
-</div>
-  <div class="photo-placeholder">
-      <img src="thief.png" alt="The Carbon Thief" style="max-width:100%; max-height:100%; border-radius: 4px;">
-  </div>
-  <form id="wordForm">
-    <div class="clue">Enter the solution from the first envelope</div>
-    <input type="text" id="word1" placeholder="Enter the first word" oninput="checkWord(1)">
-    <div class="clue" style="display:none;" id="clue2">  <div class="quiz-question">
-    <p></p>In the realm of renewable energy, a particular source stands out for its unique 'voice'. It's a type of energy generation that can 'speak' volumes about efficiency and sustainability without saying a word, yet it's often heard before it's seen. This source helps to reduce carbon footprints and can be a key topic of discussion at any work dinner, especially for those in the energy sector.</p>
-    <div class="quiz-prompt">
-      <p></p>What is this vocal energy source, often found in groups, that could serve as a 'talking point' at our dinner tonight?</p>
+  <div class="container">
+    <div class="intro-text">
+      <h1>Welcome to The Carbon Thief Puzzle</h1>
+      <p>Esteemed Participants,</p>
+      <p>The world is on the brink of an ecological precipice, and a nefarious entity known only as The Carbon Thief has exacerbated this crisis by stealing carbon certificates. These certificates are crucial in our endeavor to keep the world carbon neutral.</p>
+      <p>Your mission, should you choose to accept it, is to solve a three-part social riddle. The first part of the puzzle is written in the envelope on your table.</p>
+      <p>Engage your wit, harness your collective expertise, and work collaboratively to outsmart The Carbon Thief. Victory will not only signify the safeguarding of our planet but also bestow upon the winning team a prize worthy of such a monumental triumph.</p>
+      <p>Prepare yourselves for an evening of intrigue, strategy, and environmental salvation. The fate of the world is, quite literally, in your hands.</p>
+      <p class="prize">Good luck to all.</p>
     </div>
+    <div class="photo-placeholder">
+        <img src="thief.png" alt="The Carbon Thief">
+    </div>
+    <form id="wordForm">
+      <div class="clue">Enter the solution from the first envelope</div>
+      <input type="text" id="word1" placeholder="Enter the first word" oninput="checkWord(1)">
+      <div class="clue" id="clue2">
+        <p>In the realm of renewable energy, a particular source stands out for its unique 'voice'. It's a type of energy generation that can 'speak' volumes about efficiency and sustainability without saying a word, yet it's often heard before it's seen. This source helps to reduce carbon footprints and can be a key topic of discussion at any work dinner, especially for those in the energy sector.</p>
+        <p>What is this vocal energy source, often found in groups, that could serve as a 'talking point' at our dinner tonight?</p>
+      </div>
+      <input type="text" id="word2" placeholder="Enter the second word" oninput="checkWord(2)">
+      <div class="clue" id="clue3">
+        <p>As we gather tonight to discuss the future of energy, let's ponder a question that encapsulates our ambitions for a greener planet. This term represents a class of energy sources that are as endless as time itself, harnessed from nature's own forces. They flow from the sun, the wind, and the very rotation of the earth. Unlike their finite cousins buried deep within the earth's crust, these sources won't run out in a human lifetime.</p>
+        <p>What is the term that describes this enduring and sustainable class of energy?</p>
+      </div>
+      <input type="text" id="word3" placeholder="Enter the third word" oninput="checkWord(3)">
+      <input type="button" id="submitButton" value="Submit" onclick="checkFinal()">
+      <div class="result" id="result"></div>
+    </form>
   </div>
-</div></div>
-    <input type="text" id="word2" placeholder="Enter the second word" oninput="checkWord(2)" style="display:none;">
-    <div class="clue" style="display:none;" id="clue3">Enter the solution from the third envelope</div>
-    <input type="text" id="word3" placeholder="Enter the third word" oninput="checkWord(3)" style="display:none;">
-    <input type="button" id="submitButton" value="Submit" onclick="checkFinal()" style="display:none;">
-    <div class="result" id="result"></div>
-  </form>
-</div>
+  <script>
+  var correctWords = ['Equinor', 'Wind turbines', 'Renewable']; // Replace with actual words
+  function validateInput(event) {
+    var regex = /^[a-zA-Z0-9]+$/;
+    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+    if (!regex.test(key)) {
+      event.preventDefault();
+      return false;
+    }
+  }
+
+  // Apply the validation function to all input fields
+  document.getElementById('word1').addEventListener('keypress', validateInput);
+  document.getElementById('word2').addEventListener('keypress', validateInput);
+  document.getElementById('word3').addEventListener('keypress', validateInput);
+  
+  function checkWord(index) {
+    var inputId = 'word' + index;
+    var inputValue = document.getElementById(inputId).value.toLowerCase();
+    var nextInputId = 'word' + (index + 1);
+    var nextClueId = 'clue' + (index + 1);
+
+    if (inputValue === correctWords[index - 1]) {
+      if(index < correctWords.length) {
+        document.getElementById(nextInputId).style.display = 'block';
+        document.getElementById(nextClueId).style.display = 'block';
+      } else {
+        document.getElementById('submitButton').style.display = 'block';
+      }
+    }
+  }
+
+  function checkFinal() {
+    var allCorrect = true;
+    for (var i = 1; i <= correctWords.length; i++) {
+      if (document.getElementById('word' + i).value.toLowerCase() !== correctWords[i - 1]) {
+        allCorrect = false;
+        break;
+      }
+    }
+    document.getElementById('result').textContent = allCorrect ? 'Congratulations! All words are correct.' : 'Please check your words.';
+  }
+
+  
+</script>
+</body>
+</html>
+
 
 <script>
-  var correctWords = ['Equinor', 'Wind turbines', 'third']; // Replace with actual words
+  var correctWords = ['Equinor', 'Wind turbines', 'Renewable']; // Replace with actual words
   function validateInput(event) {
     var regex = /^[a-zA-Z0-9]+$/;
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
