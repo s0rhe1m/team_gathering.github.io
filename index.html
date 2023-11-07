@@ -3,39 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sequential Word Input</title>
+<title>Word Challenge</title>
 <style>
-  /* ... CSS from the previous example ... */
-  input[type="text"]:not(:first-of-type) {
-    display: none;
+  /* CSS code */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 340px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .clue {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+  }
+  input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  .photo-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #eaeaea;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 200px;
+    color: #ccc;
+    font-size: 16px;
+  }
+  input[type="button"] {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #5cb85c;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  input[type="button"]:hover {
+    background-color: #4cae4c;
+  }
+  .result {
+    margin-top: 20px;
+    text-align: center;
+  }
+  @media (max-width: 480px) {
+    .container {
+      width: 95%;
+      margin-top: 10px;
+    }
   }
 </style>
 </head>
 <body>
 <div class="container">
+  <div class="intro-text">
+    <p>Welcome to the Word Challenge. Follow the clues to unlock all the words.</p>
+  </div>
+  <div class="photo-placeholder">Place your photo here</div>
   <form id="wordForm">
-    <input type="text" id="word1" placeholder="Clue for first word" oninput="checkWord(1)">
-    <input type="text" id="word2" placeholder="Clue for second word" oninput="checkWord(2)">
-    <input type="text" id="word3" placeholder="Clue for third word" oninput="checkWord(3)">
+    <div class="clue">Clue for the first word</div>
+    <input type="text" id="word1" placeholder="Enter the first word" oninput="checkWord(1)">
+    <div class="clue" style="display:none;" id="clue2">Clue for the second word</div>
+    <input type="text" id="word2" placeholder="Enter the second word" oninput="checkWord(2)" style="display:none;">
+    <div class="clue" style="display:none;" id="clue3">Clue for the third word</div>
+    <input type="text" id="word3" placeholder="Enter the third word" oninput="checkWord(3)" style="display:none;">
+    <input type="button" id="submitButton" value="Submit" onclick="checkFinal()" style="display:none;">
     <div class="result" id="result"></div>
   </form>
 </div>
 
 <script>
-  var correctWords = ['what', 'is', 'uplift']; // Replace with actual words
+  var correctWords = ['first', 'second', 'third']; // Replace with actual words
   
   function checkWord(index) {
     var inputId = 'word' + index;
     var inputValue = document.getElementById(inputId).value.toLowerCase();
     var nextInputId = 'word' + (index + 1);
+    var nextClueId = 'clue' + (index + 1);
 
     if (inputValue === correctWords[index - 1]) {
       if(index < correctWords.length) {
         document.getElementById(nextInputId).style.display = 'block';
+        document.getElementById(nextClueId).style.display = 'block';
       } else {
-        document.getElementById('result').textContent = 'All words are correct. Congratulations!';
+        document.getElementById('submitButton').style.display = 'block';
       }
     }
+  }
+
+  function checkFinal() {
+    var allCorrect = true;
+    for (var i = 1; i <= correctWords.length; i++) {
+      if (document.getElementById('word' + i).value.toLowerCase() !== correctWords[i - 1]) {
+        allCorrect = false;
+        break;
+      }
+    }
+    document.getElementById('result').textContent = allCorrect ? 'Congratulations! All words are correct.' : 'Please check your words.';
   }
 </script>
 </body>
