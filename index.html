@@ -82,19 +82,6 @@
 
 <script>
   var correctWords = ['Equinor', 'Wind turbines', 'Renewable']; // Replace with actual words
-  function validateInput(event) {
-    var regex = /^[a-zA-Z0-9]+$/;
-    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-    if (!regex.test(key)) {
-      event.preventDefault();
-      return false;
-    }
-  }
-
-  // Apply the validation function to all input fields
-  document.getElementById('word1').addEventListener('keypress', validateInput);
-  document.getElementById('word2').addEventListener('keypress', validateInput);
-  document.getElementById('word3').addEventListener('keypress', validateInput);
   
   function checkWord(index) {
     var inputId = 'word' + index;
