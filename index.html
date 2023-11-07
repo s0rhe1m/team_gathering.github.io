@@ -87,11 +87,11 @@
       <img src="thief.png" alt="The Carbon Thief" style="max-width:100%; max-height:100%; border-radius: 4px;">
   </div>
   <form id="wordForm">
-    <div class="clue">Clue for the first word</div>
+    <div class="clue">Enter the solution from the first envelope</div>
     <input type="text" id="word1" placeholder="Enter the first word" oninput="checkWord(1)">
-    <div class="clue" style="display:none;" id="clue2">Clue for the second word</div>
+    <div class="clue" style="display:none;" id="clue2">Enter the solution from the second envelope</div>
     <input type="text" id="word2" placeholder="Enter the second word" oninput="checkWord(2)" style="display:none;">
-    <div class="clue" style="display:none;" id="clue3">Clue for the third word</div>
+    <div class="clue" style="display:none;" id="clue3">Enter the solution from the third envelope</div>
     <input type="text" id="word3" placeholder="Enter the third word" oninput="checkWord(3)" style="display:none;">
     <input type="button" id="submitButton" value="Submit" onclick="checkFinal()" style="display:none;">
     <div class="result" id="result"></div>
